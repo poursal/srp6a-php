@@ -62,7 +62,7 @@ It is expected that you create your own code for loading and saving data to a re
 
 Please read the recommendations in the [main thinbus documentation](https://bitbucket.org/simon_massey/thinbus-srp-js) and take additional steps such as using HTTPS and encrypting the password verifier in the database which are not shown in this demo. 
 
-**Note:** It is *strongly* *recommended* that you install the PHP [Open SSL extention](http://php.net/manual/en/book.openssl.php) which the random number generator in `srand.php` will try to use. If it cannot find that extension then it's second choice is the PHP [Mcrypt Extension](http://php.net/manual/en/book.mcrypt.php). If it cannot find that or if it is running on Windows it uses it's own random number generating approach by [George Argyros](https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP). 
+**Note:** With PHP7 the source of random numbers is now the official [string random_bytes ( int $length )](http://php.net/manual/en/function.random-bytes.php). With PHP5.2-5.6 Thinbus uses the polyfill library [random_compat](https://github.com/paragonie/random_compat).
 
 ## Troubleshooting
 
@@ -74,6 +74,8 @@ vendor/bin/phpunit --verbose ThinbusTest.php
 ```
 
 If all test pass should output a final line such as `OK (xx tests, yyy assertions)`. If not raise an issue with the verbose output of the phpunit command and the output of `phpinfo();` on your system. 
+
+If you find that the code runs slow in a server it is likely that the `pear/math_biginteger` library cannot find a native implimentation.  It uses the GMP or BCMath extensions, if available, and an internal implementation, otherwise. The fix is to install one of those extensions so that the very large number math is done at native speed rather than scripting speed. 
 
 ## License
 
