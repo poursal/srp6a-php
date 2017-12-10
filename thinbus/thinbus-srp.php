@@ -1,6 +1,6 @@
 <?php
-require_once 'srand.php';
 require_once 'thinbus-srp-common.php';
+require_once 'vendor/paragonie/random_compat/lib/random.php';
 
 /*
  * Copyright 2014 Ruslan Zavacky <ruslan.zavackiy@gmail.com>

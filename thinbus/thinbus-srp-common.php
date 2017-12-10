@@ -93,7 +93,7 @@ class ThinbusSrpCommon {
      */
     public function getSecureRandom($bytes = 32)
     {
-        $str = secure_random_bytes($bytes);
+        $str = random_bytes($bytes);
         return $this->binary2hex($str);
     }
     
