@@ -73,7 +73,7 @@ composer update
 vendor/bin/phpunit --verbose ThinbusTest.php
 ```
 
-If all test pass should output a final line such as `OK (xx tests, yyy assertions)`. If not raise an issue with the exact PHP version and the output of `phpinfo();`
+If all test pass should output a final line such as `OK (xx tests, yyy assertions)`. If not raise an issue with the verbose output of the phpunit command and the output of `phpinfo();` on your system. 
 
 ## License
 
