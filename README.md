@@ -15,7 +15,9 @@ composer update
 vendor/bin/phpunit ThinbusTest.php
 ```
 
-There is a demo appliation that uses this library at [https://packagist.org/packages/simon_massey/thinbus-php-srp-demo](https://packagist.org/packages/simon_massey/thinbus-php-srp-demo)
+There is a demo appliation that uses this library at [https://packagist.org/packages/simon_massey/thinbus-php-srp-demo](https://packagist.org/packages/simon_massey/thinbus-php-srp-demo). That shows that after running `composer update` the thinbus php code is stored under the `vendor` folder which is where the application loads it from. 
+
+
 
 ## Using In Your Application
 
