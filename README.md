@@ -66,7 +66,7 @@ Please read the recommendations in the [main thinbus documentation](https://bitb
 
 ## Troubleshooting
 
-If you are having problems first check that the PHP unit code runs locally on your worksation using the exact same version of PHP as you run on your server: 
+If you are having problems first check that the PHP unit code runs locally on your workstation using the exact same version of PHP as you run on your server: 
 
 ```sh
 composer update
