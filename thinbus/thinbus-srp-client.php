@@ -1,6 +1,5 @@
 <?php
 require_once 'srand.php';
-require_once 'BigInteger.php';
 require_once 'thinbus-srp-common.php';
 
 /*
@@ -82,9 +81,9 @@ class ThinbusSrpClient extends ThinbusSrpCommon
      */
     public function __construct($N_base10str, $g_base10str, $k_base16str, $Hstr)
     {
-        $this->N = new BigInteger($N_base10str, 10);
-        $this->g = new BigInteger($g_base10str, 10);
-        $this->k = new BigInteger($k_base16str, 16);
+        $this->N = new Math_BigInteger($N_base10str, 10);
+        $this->g = new Math_BigInteger($g_base10str, 10);
+        $this->k = new Math_BigInteger($k_base16str, 16);
         $this->H = $Hstr;
     }
 
@@ -98,7 +97,7 @@ class ThinbusSrpClient extends ThinbusSrpCommon
     {
         $this->userID = $userId;
         $this->password = $password;
-        while (! $this->A || $this->A->powMod(new BigInteger(1), $this->N) === 0) {
+        while (! $this->A || $this->A->powMod(new Math_BigInteger(1), $this->N) === 0) {
             $this->a = $this->createRandomBigIntegerInRange($this->N);
             // echo "a:".$this->a."\n";
             $this->A = $this->g->powMod($this->a, $this->N);
@@ -139,9 +138,9 @@ class ThinbusSrpClient extends ThinbusSrpCommon
         // strtoupper for cross language interoperability
         $hash = $this->hash(strtoupper($salt . $hash1));
         // trim leading zeros for cross language interoperability
-        $x = new BigInteger($this->stripLeadingZeros($hash), 16);
+        $x = new Math_BigInteger($this->stripLeadingZeros($hash), 16);
         // the following is simply mod(N) as all math is modulo N
-        $X = $x->modPow(new BigInteger("1"), $this->N);
+        $X = $x->modPow(new Math_BigInteger("1"), $this->N);
         return $X;
     }
 
@@ -204,12 +203,12 @@ class ThinbusSrpClient extends ThinbusSrpCommon
         $this->salt = $salt;
         $this->Bstr = $B;
         
-        $this->B = new BigInteger($this->Bstr, 16);
+        $this->B = new Math_BigInteger($this->Bstr, 16);
         
         // echo "c rawb:".$B."\n";
         // echo "c b:".$this->B."\n";
         
-        if ($this->B->powMod(new BigInteger(1), $this->N) === 0) {
+        if ($this->B->powMod(new Math_BigInteger(1), $this->N) === 0) {
             throw new \Exception('Server sent invalid key: B mod N == 0.');
         }
         
@@ -217,7 +216,7 @@ class ThinbusSrpClient extends ThinbusSrpCommon
         
         // echo "c rawu:".$rawu."\n";
         
-        $u = new BigInteger($rawu, 16);
+        $u = new Math_BigInteger($rawu, 16);
         
         // echo "c u:".$u->toHex()."\n";
         

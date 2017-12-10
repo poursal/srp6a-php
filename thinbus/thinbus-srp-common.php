@@ -117,16 +117,16 @@ class ThinbusSrpCommon {
             $precisionN
         ));
     
-        $ZERO = new BigInteger("0", 10);
-        $ONE = new BigInteger("1", 10);
+        $ZERO = new Math_BigInteger("0", 10);
+        $ONE = new Math_BigInteger("1", 10);
     
         $r = $ZERO;
     
         while ($r->equals($ZERO)) {
-            $x = new BigInteger($this->getSecureRandom(1 + $minBits / 8), 16);
+            $x = new Math_BigInteger($this->getSecureRandom(1 + $minBits / 8), 16);
             
             $oneTime = $this->hash($this->userID.":".$this->salt.':'.time().microtime());
-            $oneTimeBi = new BigInteger($oneTime, 16);
+            $oneTimeBi = new Math_BigInteger($oneTime, 16);
             $x = $x->add($oneTimeBi);
             
             $r = $x->modPow($ONE, $n);

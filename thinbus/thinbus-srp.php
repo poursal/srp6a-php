@@ -1,6 +1,5 @@
 <?php
 require_once 'srand.php';
-require_once 'BigInteger.php';
 require_once 'thinbus-srp-common.php';
 
 /*
@@ -57,26 +56,26 @@ class ThinbusSrp extends ThinbusSrpCommon
 
     /**
      *
-     * @var \BigInteger N
+     * @var \Math_BigInteger N
      */
     protected $N;
 
     /**
      *
-     * @var \BigInteger g
+     * @var \Math_BigInteger g
      */
     protected $g;
 
     /**
-     * We require the 'k' to be configured as binary->BigInteger is not platform portable.
+     * We require the 'k' to be configured as binary->Math_BigInteger is not platform portable.
      * 
-     * @var \BigInteger k
+     * @var \Math_BigInteger k
      */
     protected $k;
 
     /**
      *
-     * @var \BigInteger The password verifier 'v'.
+     * @var \Math_BigInteger The password verifier 'v'.
      */
     protected $v;
 
@@ -88,7 +87,7 @@ class ThinbusSrp extends ThinbusSrpCommon
 
     /**
      *
-     * @var \BigInteger|null server one time ephemeral key derived from 'b'
+     * @var \Math_BigInteger|null server one time ephemeral key derived from 'b'
      */
     protected $B = null;
 
@@ -124,9 +123,9 @@ class ThinbusSrp extends ThinbusSrpCommon
      */
     public function __construct($N_base10str, $g_base10str, $k_base16str, $Hstr)
     {
-        $this->N = new BigInteger($N_base10str, 10);
-        $this->g = new BigInteger($g_base10str, 10);
-        $this->k = new BigInteger($k_base16str, 16);
+        $this->N = new Math_BigInteger($N_base10str, 10);
+        $this->g = new Math_BigInteger($g_base10str, 10);
+        $this->k = new Math_BigInteger($k_base16str, 16);
         $this->H = $Hstr;
     }
 
@@ -147,16 +146,16 @@ class ThinbusSrp extends ThinbusSrpCommon
     {
         if ($this->step != 0)
             throw new \Exception("Possible dictionary attack refusing to collaborate");
-        $this->v = new BigInteger($v_base16str, 16);
+        $this->v = new Math_BigInteger($v_base16str, 16);
         $this->userID = $userID;
         $this->salt = $salt_base16str;
         
-        while (! $this->B || $this->B->powMod(new BigInteger(1), $this->N) === 0) {
+        while (! $this->B || $this->B->powMod(new Math_BigInteger(1), $this->N) === 0) {
             $this->b = $this->createRandomBigIntegerInRange($this->N);
             $gPowed = $this->g->powMod($this->b, $this->N);
             $this->B = $this->k->multiply($this->v)
                 ->add($gPowed)
-                ->powMod(new BigInteger(1), $this->N);
+                ->powMod(new Math_BigInteger(1), $this->N);
         }
         
         $this->Bhex = $this->stripLeadingZeros($this->B->toHex());
@@ -186,13 +185,13 @@ class ThinbusSrp extends ThinbusSrpCommon
             throw new \Exception("Possible dictionary attack refusing to collaborate.");
         
         $Ahex = $this->stripLeadingZeros($Ahex);
-        $A = new BigInteger($Ahex, 16);
+        $A = new Math_BigInteger($Ahex, 16);
         
-        if ($A->powMod(new BigInteger(1), $this->N) === 0) {
+        if ($A->powMod(new Math_BigInteger(1), $this->N) === 0) {
             throw new \Exception('Client sent invalid key: A mod N == 0.');
         }
         
-        $u = new BigInteger($this->hash($Ahex . $this->Bhex), 16);
+        $u = new Math_BigInteger($this->hash($Ahex . $this->Bhex), 16);
         
         // echo "c u:".$u->toHex()."\n";
         
