@@ -6,7 +6,7 @@ Copyright (c) Simon Massey, 2015-2017
 
 This PHP library project is published at [Packagist](https://packagist.org/packages/simon_massey/thinbus-php-srp). There is also a seperate repo that has a demo of how to use this library project at [thinbus-php-srp-demo](https://github.com/simbo1905/thinbus-php-srp-demo). 
 
-**Note** Please read the [Thinbus documentation page](https://bitbucket.org/simon_massey/thinbus-srp-js) before attempting to use this library code as that is the documenation for the JavaScript that runs at the browser which is shipped with this PHP library. Also please try running the demo project at [thinbus-php-srp-demo](https://github.com/simbo1905/thinbus-php-srp-demo) and use browser developer tools to watch the SRP6a protocl run over AJAX. 
+**Note** Please read the [Thinbus documentation page](https://bitbucket.org/simon_massey/thinbus-srp-js) before attempting to use this library code as that is the documenation for the JavaScript that runs at the browser which is shipped with this PHP library. Also please try running the demo project at [thinbus-php-srp-demo](https://github.com/simbo1905/thinbus-php-srp-demo) and use browser developer tools to watch the SRP6a protocol run over AJAX. 
 
 ## Running The Unit Tests
 
