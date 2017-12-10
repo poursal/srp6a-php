@@ -88,5 +88,3 @@ If all test pass should output a final line such as `OK (xx tests, yyy assertion
    See the License for the specific language governing permissions and
    limitations under the License.
 ```
-   
-End.
