@@ -8,7 +8,7 @@ This PHP library project is published at [Packagist](https://packagist.org/packa
 
 **Note** Please read the [Thinbus documentation page](https://bitbucket.org/simon_massey/thinbus-srp-js) before attempting to use this library code as that is the documenation for the JavaScript that runs at the browser which is shipped with this PHP library. Also please try running the demo project at [thinbus-php-srp-demo](https://github.com/simbo1905/thinbus-php-srp-demo) and use browser developer tools to watch the SRP6a protocol run over AJAX. 
 
-## Running The Unit Tests
+## Install Dependencies And Run Unit Tests
 
 ```sh
 composer update
