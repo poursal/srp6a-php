@@ -2,11 +2,11 @@
 
 Copyright (c) Simon Massey, 2015-2017
 
-[Thinbus SRP PHP](https://bitbucket.org/simon_massey/thinbus-php) is an implementation of the SRP-6a Secure Remote Password  protocol. It is compatible with [Thinbus](https://bitbucket.org/simon_massey/thinbus-srp-js) a JavaScript SRP implementation. This allows you to generate a verifier for a temporary password in PHP and have users login to a PHP server using a browser. 
+[Thinbus SRP PHP](https://bitbucket.org/simon_massey/thinbus-php) is an implementation of the SRP-6a Secure Remote Password protocol. It also includes and ships with [Thinbus](https://bitbucket.org/simon_massey/thinbus-srp-js) JavaScript SRP files. As this PHP package has PHP client and server code you can generate a verifier for a temporary password in PHP and have users login to a PHP server using a browser with the JavaScript. 
 
 This PHP library project is published at [Packagist](https://packagist.org/packages/simon_massey/thinbus-php-srp). There is also a seperate repo that has a demo of how to use this library project at [thinbus-php-srp-demo](https://github.com/simbo1905/thinbus-php-srp-demo). 
 
-**Note** Please read the [Thinbus documentation page](https://bitbucket.org/simon_massey/thinbus-srp-js) before attempting to use this library code as that is the documenation for the JavaScript that runs at the browser whihc is included in this PHP library. Also please try running the demo project at [thinbus-php-srp-demo](https://github.com/simbo1905/thinbus-php-srp-demo) and use browser developer tools to watch the SRP6a protocl run over AJAX. 
+**Note** Please read the [Thinbus documentation page](https://bitbucket.org/simon_massey/thinbus-srp-js) before attempting to use this library code as that is the documenation for the JavaScript that runs at the browser which is shipped with this PHP library. Also please try running the demo project at [thinbus-php-srp-demo](https://github.com/simbo1905/thinbus-php-srp-demo) and use browser developer tools to watch the SRP6a protocol run over AJAX. 
 
 ## Running The Unit Tests
 
@@ -15,7 +15,7 @@ composer update
 vendor/bin/phpunit ThinbusTest.php
 ```
 
-There is a demo appliation that uses this library at [https://packagist.org/packages/simon_massey/thinbus-php-srp-demo](https://packagist.org/packages/simon_massey/thinbus-php-srp-demo). That shows that after running `composer update` the thinbus php code is stored under the `vendor` folder which is where the application loads it from. 
+There is a demo application that uses this library at [https://packagist.org/packages/simon_massey/thinbus-php-srp-demo](https://packagist.org/packages/simon_massey/thinbus-php-srp-demo). That shows that after running `composer update` the thinbus php code is stored under the `vendor` folder which is where the application loads it from. 
 
 
 
