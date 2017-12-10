@@ -2,7 +2,7 @@
 
 Copyright (c) Simon Massey, 2015-2017
 
-[Thinbus SRP PHP](https://bitbucket.org/simon_massey/thinbus-php) is an implementation of the SRP-6a Secure Remote Password  protocol. It is compatible with [Thinbus](https://bitbucket.org/simon_massey/thinbus-srp-js) a JavaScript SRP implementation. This allows you to generate a verifier for a temporary password in PHP and have users login to a PHP server using a browser. 
+[Thinbus SRP PHP](https://bitbucket.org/simon_massey/thinbus-php) is an implementation of the SRP-6a Secure Remote Password protocol. It also includes and ships with [Thinbus](https://bitbucket.org/simon_massey/thinbus-srp-js) JavaScript SRP files. As this PHP package has PHP client and server code you can generate a verifier for a temporary password in PHP and have users login to a PHP server using a browser with the JavaScript. 
 
 This PHP library project is published at [Packagist](https://packagist.org/packages/simon_massey/thinbus-php-srp). There is also a seperate repo that has a demo of how to use this library project at [thinbus-php-srp-demo](https://github.com/simbo1905/thinbus-php-srp-demo). 
 
