@@ -70,7 +70,7 @@ If you are having problems first check that the PHP unit code runs locally on yo
 
 ```sh
 composer update
-vendor/bin/phpunit ThinbusTest.php
+vendor/bin/phpunit --verbose ThinbusTest.php
 ```
 
 If all test pass should output a final line such as `OK (xx tests, yyy assertions)`. If not raise an issue with the exact PHP version and the output of `phpinfo();`
