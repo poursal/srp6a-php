@@ -15,6 +15,8 @@ composer update
 vendor/bin/phpunit ThinbusTest.php
 ```
 
+There is a demo appliation that uses this library at [https://packagist.org/packages/simon_massey/thinbus-php-srp-demo](https://packagist.org/packages/simon_massey/thinbus-php-srp-demo)
+
 ## Using In Your Application
 
 The core PHP library files are in the `thinbus` folder:
