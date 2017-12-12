@@ -8,6 +8,8 @@ This PHP library project is published at [Packagist](https://packagist.org/packa
 
 **Note** Please read the [Thinbus documentation page](https://bitbucket.org/simon_massey/thinbus-srp-js) before attempting to use this library code as that is the documenation for the JavaScript that runs at the browser which is shipped with this PHP library. Also please try running the demo project at [thinbus-php-srp-demo](https://github.com/simbo1905/thinbus-php-srp-demo) and use browser developer tools to watch the SRP6a protocol run over AJAX. 
 
+**Note** High performance PHP servers have a lot of native extensions by default including php-bcmath. If you are compling your own PHP you may find that Thinbus runs very slow. It uses the official Math_BigInteger class which tries to use a native library such as php-bcmath or php-gmp. If that isn't found it tries to script the match which is too slow to be useful for cryptography. To fix this you need to install one or the other of those fast math php extensions. 
+
 ## Install Dependencies And Run Unit Tests
 
 ```sh
@@ -66,7 +68,7 @@ Please read the recommendations in the [main thinbus documentation](https://bitb
 
 Currently the `composer update` does not work on php5.6 but does work on php7+. 
 
-Note that the [Math_BigInteger](http://phpseclib.sourceforge.net/documentation/math.html) that Thinbus users runs very slow unless a native maths library is installed (which is normally the case for a high performance PHP server installation). If you find it runs slow on your host try installing "gmp" or "bcmath" which that library will attempt to use. 
+Note that the [Math_BigInteger](http://phpseclib.sourceforge.net/documentation/math.html) that Thinbus uses runs very slow (and possibly hangs or possible gives failing unit tests) unless a native maths library is installed (which is normally the case for a high performance PHP server installation). If you find it runs slow on your host try installing "gmp" or "bcmath" which that library will attempt to use. The CI build runs the image created by `Dockerfile` which is Debiam Jessie with the www.dotdeb.org backport of PHP7.0.26 with `php7.0 php-xml php-mbstring php7.0-bcmath` where the php7.0-bcmath package provides fast (native) and accurate large integer maths required to do the crypo math. 
 
 If you are having problems first check that the PHP unit code runs locally on your workstation using the exact same version of PHP as you run on your server: 
 
