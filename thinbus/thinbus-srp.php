@@ -210,8 +210,8 @@ class ThinbusSrp extends ThinbusSrpCommon
         $M = $this->stripLeadingZeros($this->hash($Ahex . $this->Bhex . $Shex));
         
         if ($M1hex != $M) {
-            // echo "error s c M:".$M1hex."\n";
-            // echo "error s s M:".$M."\n";
+            echo "error s c M:".$M1hex."\n";
+            echo "error s s M:".$M."\n";
             throw new \Exception('Client M1 does not match Server M1.');
         }
         
