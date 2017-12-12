@@ -5,4 +5,5 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -y wget git curl
 RUN wget --no-check-certificate http://www.dotdeb.org/dotdeb.gpg -O- | apt-key add -
 RUN apt-get install -y --force-yes php5-cli 
 RUN apt-get clean
+RUN echo "date.timezone =  UTC" >> /etc/php5/cli/php.ini
 CMD ["php", "-a"]
