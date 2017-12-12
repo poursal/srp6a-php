@@ -11,7 +11,12 @@ pipelines:
         caches:
           - composer
         script:
-          - apt-get update && apt-get install -y unzip php7.1-gmp
+          - apt-get update && apt-get install -y unzip php7.1-gmp wget
           - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          - wget http://http.debian.net/debian/pool/main/p/php7.1/php7.1_7.1.12-1.debian.tar.xz
+          - tar xf php7.1_7.1.12-1.debian.tar.xz
+          - cd php7.1_7.1.12-1.debian
+          - ./configure
+          - make install
           - composer install
           - vendor/bin/phpunit ThinbusTestQuick.php
