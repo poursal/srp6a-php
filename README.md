@@ -12,9 +12,20 @@ This PHP library project is published at [Packagist](https://packagist.org/packa
 
 ## Install Dependencies And Run Unit Tests
 
+With php7+ use:
+
 ```sh
 composer update
 vendor/bin/phpunit ThinbusTest.php
+```
+
+With php5.6 use:
+
+```sh
+tar vxf php56.tar
+wget https://phar.phpunit.de/phpunit-5.7.phar
+php phpunit-5.7.phar --verbose ThinbusTestQuick.php
+php phpunit-5.7.phar --verbose ThinbusTest.php
 ```
 
 There is a demo application that uses this library at [https://packagist.org/packages/simon_massey/thinbus-php-srp-demo](https://packagist.org/packages/simon_massey/thinbus-php-srp-demo). That shows that after running `composer update` the thinbus php code is stored under the `vendor` folder which is where the application loads it from. 
@@ -65,8 +76,6 @@ Please read the recommendations in the [main thinbus documentation](https://bitb
 **Note:** With PHP7 the source of random numbers is now the official [string random_bytes ( int $length )](http://php.net/manual/en/function.random-bytes.php). With PHP5.2-5.6 Thinbus uses the polyfill library [random_compat](https://github.com/paragonie/random_compat).
 
 ## Troubleshooting
-
-Currently the `composer update` does not work on php5.6 but does work on php7+. 
 
 Note that the [Math_BigInteger](http://phpseclib.sourceforge.net/documentation/math.html) that Thinbus uses runs very slow (and possibly hangs or possible gives failing unit tests) unless a native maths library is installed (which is normally the case for a high performance PHP server installation). If you find it runs slow on your host try installing "gmp" or "bcmath" which that library will attempt to use. The CI build runs the image created by `Dockerfile` which is Debiam Jessie with the www.dotdeb.org backport of PHP7.0.26 with `php7.0 php-xml php-mbstring php7.0-bcmath` where the php7.0-bcmath package provides fast (native) and accurate large integer maths required to do the crypo math. 
 
