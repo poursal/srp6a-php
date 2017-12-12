@@ -60,10 +60,10 @@ class ThibusTest extends TestCase
     {
         parent::setUp();
         
-        // this is a tiny *unsafe* 128bit prime used because the ci service has no native BigMath libraries and runs things very slowly
-        $N_base10str = "4817862704993174955327910033814509";
+        // this is a tiny *unsafe* 512 bit prime used because the ci service has no native BigMath libraries and runs things very slowly
+        $N_base10str = "12011227848607788786368694963433884984412082499535709330868967500649221002744550181892301655579232030755877988083054752398217087019239027392446";
         $g_base10str = "2";
-        $k_base16str = "59a1e465bf08f492c36a5c808d54bf8d2a3488d9e25c3409b14e754b97e87f00";
+        $k_base16str = "a3f8623ed27323beeb61e2b3c3c74370aac903e2f626fd0fdae3cd9df514a54f";
         
         $this->Srp = new NotRandomSrp($N_base10str, $g_base10str, $k_base16str, "sha256");
         
@@ -86,7 +86,7 @@ class ThibusTest extends TestCase
      * Tests the PHP client session against the PHP server session. 
      */
     public function testMutualAuthentiation() {
-        $this->Srp->setNotRandom("823466d37e1945a2d4491690bdca79dadd2ee3196e4611342437b7a2452895b9564105872ff26f6e887578b0c55453539bd3d58d36ff15f47e06cf5de818cedf951f6a0912c6978c50af790b602b6218ebf6c7db2b4652e4fcbdab44b4a993ada2878d60d66529cc3e08df8d2332fc1eff483d14938e5a");
+        $this->Srp->setNotRandom("823466d37e1945a2d4491690bdca79dadd2ee3196e4611342437b7a2452895b9");
         // salt is created at user first registration
         $salt = $this->SrpClient->generateRandomSalt(); 
         $username = "tom@arcot.com";
