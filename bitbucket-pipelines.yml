@@ -12,6 +12,8 @@ pipelines:
           - composer
         script:
           - apt-get update && apt-get install -y 
+          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
           - composer install
           - vendor/bin/phpunit ThinbusTestQuick.php
           - vendor/bin/phpunit ThinbusTest.php
+          
