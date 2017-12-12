@@ -12,6 +12,7 @@ pipelines:
           - composer
         script:
           - apt-get update && apt-get install -y 
+          - tar xf php56.tar
           - wget https://phar.phpunit.de/phpunit.phar
           - php phpunit.phar --version
           - php phpunit.phar ThinbusTestQuick.php
