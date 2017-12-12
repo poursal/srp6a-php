@@ -64,6 +64,10 @@ Please read the recommendations in the [main thinbus documentation](https://bitb
 
 ## Troubleshooting
 
+Currently the `composer update` does not work on php5.6 but does work on php7+. 
+
+Note that the [Math_BigInteger](http://phpseclib.sourceforge.net/documentation/math.html) that Thinbus users runs very slow unless a native maths library is installed (which is normally the case for a high performance PHP server installation). If you find it runs slow on your host try installing "gmp" or "bcmath" which that library will attempt to use. 
+
 If you are having problems first check that the PHP unit code runs locally on your workstation using the exact same version of PHP as you run on your server: 
 
 ```sh
