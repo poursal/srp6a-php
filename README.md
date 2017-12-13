@@ -90,6 +90,12 @@ If all test pass should output a final line such as `OK (xx tests, yyy assertion
 
 If you find that the code runs slow in a server it is likely that the `pear/math_biginteger` library cannot find a native implimentation.  It uses the GMP or BCMath extensions, if available, and an internal implementation, otherwise. The fix is to install one of those extensions so that the very large number math is done at native speed rather than scripting speed. 
 
+### Big Thanks
+
+Cross-browser Testing Platform and Open Source <3 Provided by [Sauce Labs][homepage]
+
+[homepage]: https://saucelabs.com
+
 ## License
 
 ```
