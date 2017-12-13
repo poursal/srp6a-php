@@ -66,7 +66,7 @@ You need to understand that:
 
 The following diagram shows what you need to know: 
 
-![Thinbus SRP Login Diagram](http://simonmassey.bitbucket.io/thinbus/login.png "Thinbus SRP Login Diagram")
+![Thinbus SRP Login Diagram](https://camo.githubusercontent.com/d3f3723e01f53e402f7186d157dcefbc215a41f6/687474703a2f2f73696d6f6e6d61737365792e6269746275636b65742e696f2f7468696e6275732f6c6f67696e2d63616368652e706e67 "Thinbus SRP Login Diagram")
 
 It is expected that you create your own code for loading and saving data to a real database. Do not use my demo application's SQLLite or RedBean code. Only use the PHP files at `thinbus\*.php` folder of this repo. It is expected that you use your own code for handling authorisation of which pages users can or cannot access. Trying to modifying the demo files to support your application may be harder than just modifying your current application to simply use the core Thinbus library at `thinbus\*.php`. 
 
