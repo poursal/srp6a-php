@@ -3,7 +3,7 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: simonmassey/php7.0.26:latest
+image: simonmassey/centos-php72:latest
 
 pipelines:
   default:
@@ -11,7 +11,7 @@ pipelines:
         caches:
           - composer
         script:
-          - apt-get update && apt-get install -y 
+          - yum update -y && yum clean all
           - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
           - composer install
           - vendor/bin/phpunit ThinbusTestQuick.php

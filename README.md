@@ -71,7 +71,7 @@ It is expected that you create your own code for loading and saving data to a re
 
 Please read the recommendations in the [main thinbus documentation](https://bitbucket.org/simon_massey/thinbus-srp-js) and take additional steps such as using HTTPS and encrypting the password verifier in the database which are not shown in this demo. 
 
-**Note:** With PHP7 the source of random numbers is now the official [string random_bytes ( int $length )](http://php.net/manual/en/function.random-bytes.php). With PHP5.2-5.6 Thinbus uses the polyfill library [random_compat](https://github.com/paragonie/random_compat).
+**Note:** With PHP7 the source of random numbers is now the official [string random_bytes ( int $length )](http://php.net/manual/en/function.random-bytes.php). With PHP5.2+ Thinbus uses the polyfill library [random_compat](https://github.com/paragonie/random_compat). Note that PHP5.6 and PHP7.0 are no longer actively supported but do get security patches through 2018. So you really need to upgrade to PHP7.1+ today to have security patches for the next few years. See http://php.net/supported-versions.php
 
 ## Troubleshooting
 

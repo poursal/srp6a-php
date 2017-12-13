@@ -1,9 +1,6 @@
 # This creates a php6.5 image to run the bitbucket build pipeline
-FROM debian:wheezy
-RUN echo "deb http://packages.dotdeb.org wheezy-php56 all" >> /etc/apt/sources.list.d/dotdeb.list && echo "deb-src http://packages.dotdeb.org wheezy-php56 all" >> /etc/apt/sources.list.d/dotdeb.list
-RUN apt-get update -y && apt-get upgrade -y && apt-get install -y wget git curl
-RUN wget --no-check-certificate http://www.dotdeb.org/dotdeb.gpg -O- | apt-key add -
-RUN apt-get install -y --force-yes php5-cli 
-RUN apt-get clean
-RUN echo "date.timezone =  UTC" >> /etc/php5/cli/php.ini
+FROM centos:centos7
+RUN yum update -y && yum install -y wget
+RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm && rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
+RUN yum install yum-utils -y && yum-config-manager --enable remi-php72 && yum install -y php72 && yum clean all
 CMD ["php", "-a"]
