@@ -16,7 +16,6 @@ With php7+ use:
 
 ```sh
 composer update
-vendor/bin/phpunit --verbose ThinbusTestQuick.php
 vendor/bin/phpunit --verbose ThinbusTest.php
 ```
 
@@ -25,7 +24,6 @@ With php5.6 use:
 ```sh
 tar vxf php56.tar
 wget https://phar.phpunit.de/phpunit-5.7.phar
-php phpunit-5.7.phar --verbose ThinbusTestQuick.php
 php phpunit-5.7.phar --verbose ThinbusTest.php
 ```
 
