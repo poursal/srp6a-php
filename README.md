@@ -76,7 +76,7 @@ Please read the recommendations in the [main thinbus documentation](https://bitb
 
 ## Troubleshooting
 
-Note that the [Math_BigInteger](http://phpseclib.sourceforge.net/documentation/math.html) that Thinbus uses to do the crypto math runs very slow (and possibly hangs or possible gives failing unit tests) unless a native math extension is installed. Usually high performance PHP server installation have a native math exention installed. If you find Thinbus runs slow on your host try installing "bcmath" (or "gmp"). The CI build runs the image created by `Dockerfile` which is Debian Jessie with the www.dotdeb.org backport of PHP7.0.26 with `php7.0 php-xml php-mbstring php7.0-bcmath` where the php7.0-bcmath package provides fast (native) and accurate very large integer maths need to run the SRP crypo math fast. 
+Note that the [Math_BigInteger](http://phpseclib.sourceforge.net/documentation/math.html) that Thinbus uses to do the crypto math runs very slow (and possibly hangs or possibly gives failing unit tests) unless a native math extension is installed. Usually high performance PHP server installation have a native math exention installed. If you find Thinbus runs slow on your host try installing "bcmath" (or "gmp"). The CI build runs the image created by `Dockerfile` which is Centos7 with PHP7.2 with `php-bcmath` which provides fast (native) and accurate very large integer maths need to run the SRP crypo math fast. (That images is published on hub.docker.com you can see the details in the bitbucket-pipelines.yaml file.)
 
 If you are having problems first check that the PHP unit code runs locally on your workstation using the exact same version of PHP as you run on your server: 
 
