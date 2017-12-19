@@ -93,6 +93,24 @@ If you find that the code runs slow in a server it is likely that the `pear/math
 
 Cross-browser Testing Platform and Open Source <3 Provided by [Sauce Labs][homepage]
 
+Using Sauce Labs the demo app code [thinbus-php-srp-demo](https://packagist.org/packages/simon_massey/thinbus-php-srp-demo) has been tested to work on:
+
+ * Android 6.0 
+ * Android 5.1
+ * Android 5.0
+ * Android 4.4
+ * iOS 11.0
+ * iOS 8.1
+ * Microsoft Edge 15
+ * Microsoft Edge 13
+ * Microsoft Explorer 11 (note all previous versions were end of life Jan 2016)
+ * Chrome 63
+ * Chrome 26
+ * Firefox 57
+ * Firefox 4 (released March 22, 2011!)
+ * Safari 11 
+ * Safari 7 
+
 [homepage]: https://saucelabs.com
 
 ## License
