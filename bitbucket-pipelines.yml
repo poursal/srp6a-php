@@ -14,5 +14,5 @@ pipelines:
           - yum update -y && yum clean all
           - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
           - composer install
-          - vendor/bin/phpunit --verbose  ThinbusTest.php
+          - vendor/bin/phpunit --verbose
           

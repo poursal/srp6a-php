@@ -1,6 +1,6 @@
 <?php
-require_once 'thinbus-srp-common.php';
-require_once 'vendor/paragonie/random_compat/lib/random.php';
+
+namespace Thinbus;
 
 /*
  * Copyright 2014 Ruslan Zavacky <ruslan.zavackiy@gmail.com>
@@ -25,6 +25,8 @@ require_once 'vendor/paragonie/random_compat/lib/random.php';
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+use Math_BigInteger;
+
 /**
  * See http://simon_massey.bitbucket.org/thinbus/login.png
  * Please read the readme at https://bitbucket.org/simon_massey/thinbus-srp-js
@@ -93,7 +95,7 @@ class ThinbusSrp extends ThinbusSrpCommon
 
     /**
      *
-     * @var srring A string version of B
+     * @var string A string version of B
      */
     protected $Bhex;
 
