@@ -1,7 +1,7 @@
 <?php
 require_once 'thinbus/thinbus-srp.php';
 
-require_once 'vendor/pear/math_biginteger/Math/BigInteger.php';
+require_once __DIR__ . '/../../pear/math_biginteger/Math/BigInteger.php';
 
 require_once 'thinbus/thinbus-srp-client.php';
 
@@ -417,12 +417,12 @@ class ThibusTest extends TestCase
         $canary = 'x' . getenv('ZEND_PHPUNIT_PROJECT_LOCATION') . 'x';
         
         if ($canary == 'xx') {
-            $projectDir = getcwd();
+            $projectDir = __DIR__;
         }
         
         // parse your data file however you want
         $data = array();
-        foreach (file($projectDir . '/test-vectors-sha1.txt') as $line) {
+        foreach ( file($projectDir . '/test-vectors-sha1.txt') as $line) {
             $data[] = trim($line);
         }
 
