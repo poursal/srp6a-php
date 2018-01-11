@@ -1,4 +1,7 @@
 <?php
+
+namespace Thinbus;
+
 /*
  * Copyright 2014 Ruslan Zavacky <ruslan.zavackiy@gmail.com>
  * Copyright 2015-2017 Simon Massey
@@ -22,6 +25,8 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+use Math_BigInteger;
+
 class ThinbusSrpCommon {
     
     /**

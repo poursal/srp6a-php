@@ -1,6 +1,6 @@
 <?php
-require_once 'thinbus-srp-common.php';
-require_once __DIR__ . '/../../../paragonie/random_compat/lib/random.php';
+
+namespace Thinbus;
 
 /*
  * Copyright 2017 Keith Wagner
@@ -25,6 +25,8 @@ require_once __DIR__ . '/../../../paragonie/random_compat/lib/random.php';
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+use Math_BigInteger;
+
 class ThinbusSrpClient extends ThinbusSrpCommon
 {
 
@@ -113,12 +115,9 @@ class ThinbusSrpClient extends ThinbusSrpCommon
      *
      * <p> Specification RFC 2945
      *
-     * @param $salt The
-     *            salt 's'. Must not be null or empty.
-     * @param $identity The
-     *            user identity/email 'I'. Must not be null or empty.
-     * @param $password The
-     *            user password 'P'. Must not be null or empty
+     * @param string $salt The salt 's'. Must not be null or empty.
+     * @param string $identity The user identity/email 'I'. Must not be null or empty.
+     * @param string $password The user password 'P'. Must not be null or empty
      */
     function generateX($salt, $identify, $password)
     {

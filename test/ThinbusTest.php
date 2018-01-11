@@ -1,11 +1,11 @@
 <?php
-require_once 'thinbus/thinbus-srp.php';
 
-require_once __DIR__ . '/../../pear/math_biginteger/Math/BigInteger.php';
+namespace Thinbus\Test;
 
-require_once 'thinbus/thinbus-srp-client.php';
-
+use Math_BigInteger;
 use PHPUnit\Framework\TestCase;
+use Thinbus\ThinbusSrp;
+use Thinbus\ThinbusSrpClient;
 
 /**
  * This subclass lets use override the random 'b' value and constant 'k' value with those seen in a debugger running the js+java thinbus tests.
@@ -222,7 +222,7 @@ class ThibusTest extends TestCase
         try {
             $this->SrpClient->generateVerifier('', 'x', 'y');
             $success = false;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // good
         }
         
@@ -231,7 +231,7 @@ class ThibusTest extends TestCase
         try {
             $this->SrpClient->generateVerifier('x', '', 'y');
             $success = false;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // good
         }
         
@@ -240,7 +240,7 @@ class ThibusTest extends TestCase
         try {
             $this->SrpClient->generateVerifier('x', 'y', '');
             $success = false;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // good
         }
         

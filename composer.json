@@ -13,6 +13,11 @@
             "role": "Developer"
         }
     ],
+    "autoload": {
+        "classmap": [
+            "thinbus/"
+        ]
+    },
     "require": {
         "php": "^7.0",
         "pear/math_biginteger": "^1.0",
