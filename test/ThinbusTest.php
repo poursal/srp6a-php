@@ -394,7 +394,7 @@ class ThibusTest extends TestCase
             $A = $credentials[0];
             $M1 = $credentials[1];
             $M2 = $this->Srp->step2($A, $M1);
-            $this->SrpClient->verifyConfirmation($M2);
+            $this->assertTrue($this->SrpClient->verifyConfirmation($M2));
             // noop assert else phpunit complains about this test. thinbus-php will have thrown exception if authenitication didn't work.
             $this->assertEquals(0, 0);
             $this->tearDown();

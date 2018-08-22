@@ -252,7 +252,7 @@ class ThinbusSrpClient extends ThinbusSrpCommon
         
         // echo "c M1:".$M."\n";
         
-        $HAMK = $this->hash($this->Astr . $M . $Shex);
+        $HAMK = $this->stripLeadingZeros($this->hash($this->Astr . $M . $Shex));
         
         // echo "c M2:".$HAMK."\n";
         
