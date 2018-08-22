@@ -18,7 +18,7 @@ With php7+ use:
 
 ```sh
 composer update
-vendor/bin/phpunit --verbose ThinbusTest.php
+vendor/bin/phpunit --verbose test/ThinbusTest.php
 ```
 
 With php5.6 use:
