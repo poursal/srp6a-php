@@ -368,7 +368,40 @@ class ThibusTest extends TestCase
         $this->assertEquals(0, 0);
 
     }
-    
+
+    public function testMutualAuthentiationRepeatedly() {
+        for( $j=0; $j<64; $j++ ) {
+            $N_base10str = "19502997308733555461855666625958719160994364695757801883048536560804281608617712589335141535572898798222757219122180598766018632900275026915053180353164617230434226106273953899391119864257302295174320915476500215995601482640160424279800690785793808960633891416021244925484141974964367107";
+            $g_base10str = "2";
+            $k_base16str = "1a3d1769e1d6337af78796f1802f9b14fbc20278fb6e15e4361beb38a8e7cd3a";
+
+            $this->Srp = new ThinbusSrp($N_base10str, $g_base10str, $k_base16str, "sha256");
+
+            $this->SrpClient = new ThinbusSrpClient($N_base10str, $g_base10str, $k_base16str, "sha256");
+
+            // salt is created at user first registration
+            $salt = $this->SrpClient->generateRandomSalt();
+            $username = "tom@arcot.com";
+            $password = "password1234";
+            // verifier to be generated at the browser during user registration and password (or email address) reset only
+            $v = $this->SrpClient->generateVerifier($salt, $username, $password);
+            // normal login flow step1a client: browser starts with username and password given by user at the browser
+            $this->SrpClient->step1($username, $password);
+            // server challenge
+            $B = $this->Srp->step1($username, $salt, $v);
+            // client response is array of credentials
+            $credentials = $this->SrpClient->step2($salt, $B);
+            $A = $credentials[0];
+            $M1 = $credentials[1];
+            $M2 = $this->Srp->step2($A, $M1);
+            $this->SrpClient->verifyConfirmation($M2);
+            // noop assert else phpunit complains about this test. thinbus-php will have thrown exception if authenitication didn't work.
+            $this->assertEquals(0, 0);
+            $this->tearDown();
+        }
+
+    }
+
     public function testWithJavaValues() {
         $this->Srp->setNotRandom("823466d37e1945a2d4491690bdca79dadd2ee3196e4611342437b7a2452895b9564105872ff26f6e887578b0c55453539bd3d58d36ff15f47e06cf5de818cedf951f6a0912c6978c50af790b602b6218ebf6c7db2b4652e4fcbdab44b4a993ada2878d60d66529cc3e08df8d2332fc1eff483d14938e5a");
         $B = $this->Srp->step1("tom@arcot.com", "2c7c4e8172a2b11af2278a6743a021acb8c497611b576a42d1bd1a2271732a40", "3e319ec41fbfb0d51cd99f01b2427fbe7ea5b4a5a3ec7b570b49a9ca2bb30b09abc395c462f002a619e66c315d9dff399bf82d35369c7567d443823e57de443476fbc4200c736297ad30ef968b80901d646d360499d470ba52b08f9d97885fac1ad8b1031bc44608903b87a6d2c31593f0e1151eaa137d");

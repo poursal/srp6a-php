@@ -104,7 +104,7 @@ class ThinbusSrpClient extends ThinbusSrpCommon
             // echo "a:".$this->a."\n";
             $this->A = $this->g->powMod($this->a, $this->N);
         }
-        $this->Astr = $this->A->toHex();
+        $this->Astr = $this->stripLeadingZeros($this->A->toHex());
         return $this->Astr;
     }
 
