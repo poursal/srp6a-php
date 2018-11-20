@@ -160,7 +160,7 @@ class ThinbusSrp extends ThinbusSrpCommon
                 ->powMod(new Math_BigInteger(1), $this->N);
         }
         
-        $this->Bhex = $this->stripLeadingZeros($this->B->toHex());
+        $this->Bhex = $this->B->toHex();
         
         // echo "s b:".$this->b."\n";
         // echo "s B:".$this->Bhex."\n";
@@ -186,7 +186,6 @@ class ThinbusSrp extends ThinbusSrpCommon
         if ($this->step != 1)
             throw new \Exception("Possible dictionary attack refusing to collaborate.");
         
-        $Ahex = $this->stripLeadingZeros($Ahex);
         $A = new Math_BigInteger($Ahex, 16);
         
         if ($A->powMod(new Math_BigInteger(1), $this->N) === 0) {
@@ -203,19 +202,19 @@ class ThinbusSrp extends ThinbusSrpCommon
         
         // echo "s S:".$S."\n";
         
-        $Shex = $this->stripLeadingZeros($S->toHex());
+        $Shex = $S->toHex();
         
         // echo "s S:".$Shex."\n";
         
         $this->K = $this->hash($Shex);
         
-        $M = $this->stripLeadingZeros($this->hash($Ahex . $this->Bhex . $Shex));
+        $M = $this->hash($Ahex . $this->Bhex . $this->K);
 
         if ($M1hex != $M) {
             throw new \Exception('Client M1 does not match Server M1.');
         }
         
-        $M2 = $this->hash($Ahex . $M . $Shex);
+        $M2 = $this->hash($Ahex . $M . $this->K);
         
         $this->step = 2;
         
@@ -227,7 +226,7 @@ class ThinbusSrp extends ThinbusSrpCommon
         $this->B = null;
         $this->H = null;
         
-        return $this->stripLeadingZeros($M2);
+        return $M2;
     }
 
     /**
@@ -250,6 +249,6 @@ class ThinbusSrp extends ThinbusSrpCommon
 
     protected function hash($x)
     {
-        return strtolower(hash($this->H, $x));
+        return strtolower(bin2hex(hash($this->H, hex2bin($x), true)));
     }
 }
