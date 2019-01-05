@@ -253,6 +253,6 @@ class ThinbusSrp extends ThinbusSrpCommon
 		$x = hex2bin($x);
 	}
 
-        return strtolower(bin2hex(hash($this->H, hex2bin($x), true)));
+        return strtolower(bin2hex(hash($this->H, $x, true)));
     }
 }
