@@ -247,11 +247,10 @@ class ThinbusSrp extends ThinbusSrpCommon
         return $this->K;
     }
 
-    protected function hash($x)
+    protected function hash($x, $isHex = true)
     {
-	// Add 0 to make it even length
-	if ( strlen($x)%2==1 ) {
-		$x = '0'. $x;
+	if ( $isHex ) {
+		$x = hex2bin($x);
 	}
 
         return strtolower(bin2hex(hash($this->H, hex2bin($x), true)));

@@ -130,7 +130,7 @@ class ThinbusSrpCommon {
         while ($r->equals($ZERO)) {
             $x = new Math_BigInteger($this->getSecureRandom(1 + $minBits / 8), 16);
             
-            $oneTime = $this->hash($this->userID.":".$this->salt.':'.time().microtime());
+            $oneTime = $this->hash($this->userID.":".$this->salt.':'.time().microtime(), false);
             $oneTimeBi = new Math_BigInteger($oneTime, 16);
             $x = $x->add($oneTimeBi);
             
